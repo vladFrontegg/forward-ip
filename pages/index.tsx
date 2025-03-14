@@ -5,12 +5,6 @@ import { AdminPortal } from '@frontegg/nextjs'
 import {useRouter} from 'next/router';  
 import { useAuthActions } from '@frontegg/react-hooks';
 import { useCallback, useEffect } from "react";
-import {
-  useFeatureEntitlements,
-  usePermissionEntitlements,
-  useEntitlements,
-  useIsAuthenticated,
-} from "@frontegg/nextjs";
 
 export default function ExamplePage({  }) {
   const {user} = useAuth();
@@ -39,27 +33,6 @@ const handleClick = () => {
     
   };
 
-  const checkHeader = async () => {
-    
-
-    const response = await fetch("/api/header", {
-      method: "GET",
-    });
-console.log(response.json())
-    return response.json();
-  };
-
-  const { loadEntitlements } = useAuthActions();
-  const onLoadEntitlements = () => { loadEntitlements({callback: (isSucceeded) =>
-            console.log(`request ${isSucceeded ? "succeeded" : "failed"}`),
-    });
-};
-
-useEffect(() => {
-  checkHeader()
-  console.log('useEffect fix GitHub');
-},[])
-
   return (
     <div>
       <h1>My Page</h1>
@@ -86,8 +59,6 @@ useEffect(() => {
           <div>
           <button onClick={() => loginWithRedirect()}>Go to hosted login</button>
           </div>
-     <button onClick={() => {loadEntitlements();}}> Load entitlements </button>;
-     <button onClick={onLoadEntitlements}>Load entitlements with callback</button>;
     </div>
       
   );
