@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@frontegg/nextjs": "^9.2.2-alpha.13540668007",
+    "@frontegg/nextjs": "9.2.2-alpha.13885934545",
     "@types/node": "18.15.3",
     "@types/react-dom": "18.0.11",
     "eslint": "8.36.0",
