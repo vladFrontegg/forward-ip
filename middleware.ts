@@ -10,10 +10,11 @@ export const middleware = async (request: any) => {
   
   if (process.env.FRONTEGG_FORWARD_IP === 'true') {
     console.log('headers' , headers);
-    headers.set('X-Forwarded-For', ip || headers.get('x-real-ip') || '');
+    // headers.set('x-forwarded-for', ip || headers.get('x-real-ip') || '');
+    headers.set('x-forwarded-for', 'some ip');
   }
   
-  console.log("X-Forwarded-For", headers.get('X-Forwarded-For'))
+  console.log("X-Forwarded-For", headers.get('x-forwarded-for'))
   console.log("x-real-ip", headers.get('x-real-ip'))
 
   return handleSessionOnEdge({ request, pathname, searchParams, headers });
@@ -22,3 +23,4 @@ export const middleware = async (request: any) => {
 export const config = {
   matcher: '/(.*)',
 };
+// 9.2.2-alpha.13540668007
