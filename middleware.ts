@@ -2,24 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import { handleSessionOnEdge } from '@frontegg/nextjs/edge';
 
 export const middleware = async (request: any) => {
-  // const { pathname, searchParams } = request.nextUrl;
-  // const headers = request.headers;
-  // const ip = request?.ip
-  // console.log(`ip: `, ip)
-  // // Additional logic if needed
+  const { pathname, searchParams } = request.nextUrl;
+  const headers = request.headers;
+  const ip = request?.ip
+  console.log(`ip: `, ip)
+  // Additional logic if needed
   
-  // if (process.env.FRONTEGG_FORWARD_IP === 'true') {
-  //   console.log('headers' , headers);
-  //   // headers.set('x-forwarded-for', ip || headers.get('x-real-ip') || '');
-  //   headers.set('x-forwarded-for', 'some ip');
-  // }
+  if (process.env.FRONTEGG_FORWARD_IP === 'true') {
+    console.log('headers' , headers);
+    // headers.set('x-forwarded-for', ip || headers.get('x-real-ip') || '');
+    headers.set('x-forwarded-for', 'some ip');
+  }
   
-  // console.log("X-Forwarded-For", headers.get('x-forwarded-for'))
-  // console.log("x-real-ip", headers.get('x-real-ip'))
+  console.log("X-Forwarded-For", headers.get('x-forwarded-for'))
+  console.log("x-real-ip", headers.get('x-real-ip'))
 
-  // return handleSessionOnEdge({ request, pathname, searchParams, headers });
+  return handleSessionOnEdge({ request, pathname, searchParams, headers });
 
-  return NextResponse.next();
 };
 
 export const config = {
