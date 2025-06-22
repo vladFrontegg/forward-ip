@@ -13,7 +13,7 @@ export const middleware = async (request: any) => {
     // headers.set('x-forwarded-for', ip || headers.get('x-real-ip') || '');
     headers.set("x-forwarded-for", "testttt");
   }
-
+  console.log("process.env.VERCEL", process.env.VERCEL);
   console.log("X-Forwarded-For", headers.get("x-forwarded-for"));
   console.log("x-real-ip", headers.get("x-real-ip"));
 
