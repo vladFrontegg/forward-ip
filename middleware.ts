@@ -7,6 +7,8 @@ export const middleware = async (request: any) => {
   // Additional logic if needed
 
   headers.set("x-forwarded-for", "test123");
+  headers.set("my-test-header", "test123");
+  console.log("headers my-test-header", headers.get("my-test-header"));
 
   return handleSessionOnEdge({ request, pathname, searchParams, headers });
 };
