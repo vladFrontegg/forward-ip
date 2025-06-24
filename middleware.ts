@@ -6,11 +6,7 @@ export const middleware = async (request: any) => {
   const headers = request.headers;
   // Additional logic if needed
 
-  // if (process.env.FRONTEGG_FORWARD_IP === "true") {
-  //   console.log("inside FRONTEGG_FORWARD_IP middleware");
-  //   // headers.set('x-forwarded-for', ip || headers.get('x-real-ip') || '');
-  //   headers.set("x-forwarded-for", "testttt");
-  // }
+  headers.set("x-forwarded-for", "test123");
 
   return handleSessionOnEdge({ request, pathname, searchParams, headers });
 };
