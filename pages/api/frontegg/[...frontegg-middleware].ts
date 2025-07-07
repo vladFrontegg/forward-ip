@@ -1,11 +1,7 @@
 import { FronteggApiMiddleware } from "@frontegg/nextjs/middleware";
 import { NextApiRequest } from "next";
 
-export default FronteggApiMiddleware.withOptions({
-  getClientIp: (req: NextApiRequest) => {
-    return req.headers["x-forwarded-for"]?.toString();
-  },
-});
+export default FronteggApiMiddleware;
 
 export const config = {
   api: {
