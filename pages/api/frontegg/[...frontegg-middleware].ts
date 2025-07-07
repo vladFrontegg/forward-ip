@@ -3,7 +3,7 @@ import { NextApiRequest } from "next";
 
 export default FronteggApiMiddleware.withOptions({
   getClientIp: (req: NextApiRequest) => {
-    return "testttt";
+    return req.headers["x-forwarded-for"]?.toString();
   },
 });
 
