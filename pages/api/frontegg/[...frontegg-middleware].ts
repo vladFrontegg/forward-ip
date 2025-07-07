@@ -3,8 +3,7 @@ import { NextApiRequest } from "next";
 
 export default FronteggApiMiddleware.withOptions({
   getClientIp: (req: NextApiRequest) => {
-    console.log("req", JSON.stringify(req));
-    return "127.1.1.1";
+    return "testttt";
   },
 });
 
