@@ -4,8 +4,16 @@ import { handleSessionOnEdge } from "@frontegg/nextjs/edge";
 export const middleware = async (request: any) => {
   const { pathname, searchParams } = request.nextUrl;
   const headers = request.headers;
-  // Additional logic if needed
 
+  // Catch /frontegg/identity/resources/users/v1/me/authorization requests and log headers
+  if (pathname.includes("/me/authorization")) {
+    console.log("=== Authorization Request ===");
+    console.log("Headers:", Object.fromEntries(headers.entries()));
+    console.log("Referrer:", headers.get("referer") || "No referrer");
+    console.log("============================");
+  }
+
+  // Additional logic if needed
   return handleSessionOnEdge({ request, pathname, searchParams, headers });
 };
 
