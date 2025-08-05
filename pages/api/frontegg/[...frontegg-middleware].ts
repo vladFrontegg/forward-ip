@@ -1,11 +1,7 @@
 import { FronteggApiMiddleware } from "@frontegg/nextjs/middleware";
 import { NextApiRequest } from "next";
 
-export default FronteggApiMiddleware.withOptions({
-  getClientIp: (req: NextApiRequest) => {
-    return "111.111.111107";
-  },
-});
+export default FronteggApiMiddleware;
 
 export const config = {
   api: {
